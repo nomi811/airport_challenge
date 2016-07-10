@@ -1,7 +1,10 @@
 class Airport
 
-  def location(plane)
-    'flying'
+
+
+  def location_is(plane)
+    plane.location
   end
 
+  
 end
