@@ -26,8 +26,10 @@ describe Airport do
   end
 
   context 'weather conditions' do
-    it 'can be sunny' do
-      expect(airport.weather).to eq 'sunny'
+    it 'can be sunny or stormy' do
+      weather_conditions = []
+      10.times {weather_conditions << airport.weather }
+      expect(weather_conditions.uniq).to contain_exactly('sunny', 'stormy')
     end
   end
 end
