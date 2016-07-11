@@ -1,10 +1,12 @@
+I decided to go through this challenge a second time after totally getting lost with my original code and having error messages from Rspec that I couldn't figure out how to resolve.
+
+This time I am following along with Sanjay Purswani's code that he put in his blog. I am testing and adding code while I try to understand how everything works.
+
+
 # Airport Challenge
 
-Software to control the flow of planes at an airport.
-
-The planes can land and take off provided the weather is sunny.
-If it is stormy, no planes can land or take off.
-
+This program will allow planes to land and take off provided the weather is sunny.  If it is stormy, no planes can land or take off.
+The airport will be able to confirm whether the planes have taken off or landed and if the airport's capacity is full.  There will be a default airport capacity that will be able to be overridden.
 
 ```
 As an air traffic controller
