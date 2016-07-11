@@ -19,8 +19,13 @@ describe Plane do
       expect(plane.request_landing(airport)).to eq true
     end
     it 'checks to see if the planes have landed' do
+      plane = Plane.new
       plane.land :airport
       expect(plane.status).to eq 'landed'
+    end
+    it 'does not respond to "land" after landing' do
+      plane.land :airport
+      expect { (plane.land :airport) }.to raise_error 'already landed'
     end
 
   end

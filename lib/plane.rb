@@ -18,6 +18,7 @@ class Plane
   end
 
   def land(airport)
+    fail 'already landed' if @status == 'landed'
     @status = 'landed'
   end
 
