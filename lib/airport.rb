@@ -12,8 +12,7 @@ class Airport
   end
 
   def order_land(plane)
-    fail 'landing permission denied' unless weather_good?
-    fail 'airport full, landing permission denied' unless can_land?
+    fail 'landing permission denied' unless weather_good? || can_land?
     plane.land self
   end
 
