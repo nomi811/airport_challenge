@@ -22,7 +22,8 @@ class Plane
     @status = 'landed'
   end
 
-  def takeoff(airport)
+  def takeoff
+    fail 'already flying' if @status == 'flying'
     @status = 'flying'
   end
 end

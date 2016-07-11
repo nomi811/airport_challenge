@@ -23,10 +23,20 @@ describe Plane do
       plane.land :airport
       expect(plane.status).to eq 'landed'
     end
-    it 'does not respond to "land" after landing' do
+    it 'does not respond to "land" after already landing' do
       plane.land :airport
       expect { (plane.land :airport) }.to raise_error 'already landed'
     end
+
+  context 'take off tests' do
+    it { is_expected.to respond_to(:takeoff) }
+    it { is_expected.to respond_to(:request_takeoff) }
+    it 'does not respond to "take off" after already taking off' do
+      plane.land :airport
+      plane.takeoff
+      expect { (plane.takeoff) }.to raise_error 'already flying'
+    end
+  end
 
   end
 end
