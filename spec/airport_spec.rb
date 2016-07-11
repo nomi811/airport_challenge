@@ -31,14 +31,19 @@ describe Airport do
       10.times {weather_conditions << airport.weather }
       expect(weather_conditions.uniq).to contain_exactly('sunny', 'stormy')
     end
-    it 'does not let the plane land when the weather is stormy' do
+    it 'does not let planes land when the weather is stormy' do
       allow_any_instance_of(Airport).to receive(:weather).and_return(:'stormy')
       expect { (airport.order_land :plane) }.to raise_error 'landing permission denied'
     end
-    it 'does not let the plane take off when the weather is stormy' do
+    it 'does not let planes take off when the weather is stormy' do
       plane = Plane.new
       allow_any_instance_of(Airport).to receive(:weather).and_return(:'stormy')
       expect { (airport.order_takeoff :plane) }.to raise_error 'take off permission denied'
+    end
+    it 'does not let planes land if the airport is full' do
+      plane = Plane.new
+      allow_any_instance_of(Airport).to receive(:can_land?).and_return(false)
+      expect { (airport.order_land :plane) }.to raise_error 'landing permission denied'
     end
   end
 end
