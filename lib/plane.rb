@@ -16,4 +16,12 @@ class Plane
   def request_landing(airport)
     airport.order_land self
   end
+
+  def land(airport)
+    @status = 'landed'
+  end
+
+  def takeoff(airport)
+    @status = 'flying'
+  end
 end

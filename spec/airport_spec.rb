@@ -35,5 +35,10 @@ describe Airport do
       allow_any_instance_of(Airport).to receive(:weather).and_return(:'stormy')
       expect { (airport.order_land :plane) }.to raise_error 'landing permission denied'
     end
+    it 'does not let the plane take off when the weather is stormy' do
+      plane = Plane.new
+      allow_any_instance_of(Airport).to receive(:weather).and_return(:'stormy')
+      expect { (airport.order_takeoff :plane) }.to raise_error 'take off permission denied'
+    end
   end
 end

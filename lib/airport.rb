@@ -7,7 +7,8 @@ class Airport
   end
 
   def order_takeoff(plane)
-    plane.takeoff
+    fail 'take off permission denied' unless weather_good?
+    plane.takeoff self
   end
 
   def order_land(plane)
