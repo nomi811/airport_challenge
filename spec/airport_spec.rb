@@ -31,5 +31,9 @@ describe Airport do
       10.times {weather_conditions << airport.weather }
       expect(weather_conditions.uniq).to contain_exactly('sunny', 'stormy')
     end
+    it 'does not let the plane land when the weather is stormy' do
+      allow_any_instance_of(Airport).to receive(:weather).and_return(:'stormy')
+      expect { (airport.order_land :plane) }.to raise_error 'landing permission denied'
+    end
   end
 end

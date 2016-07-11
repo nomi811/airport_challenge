@@ -11,10 +11,15 @@ class Airport
   end
 
   def order_land(plane)
+    fail 'landing permission denied' unless weather_good?
     plane.land self
   end
 
   def weather
     ['sunny', 'stormy'].sample
+  end
+
+  def weather_good?
+    weather == 'sunny'
   end
 end
